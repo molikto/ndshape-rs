@@ -49,6 +49,27 @@ macro_rules! impl_shape2 {
                 [x, y]
             }
         }
+
+        #[cfg(feature = "serde")]
+        impl serde::Serialize for RuntimeShape<$scalar, 2> {
+            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+            where
+                S: serde::Serializer,
+            {
+                self.array.serialize(serializer)
+            }
+        }
+
+        #[cfg(feature = "serde")]
+        impl<'de> serde::Deserialize<'de> for RuntimeShape<$scalar, 2> {
+            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                let array = <[$scalar; 2]>::deserialize(deserializer)?;
+                Ok(Self::new(array))
+            }
+        }
     };
 }
 
@@ -105,6 +126,27 @@ macro_rules! impl_shape3 {
                 let y = i / self.strides[1];
                 let x = i % self.strides[1];
                 [x, y, z]
+            }
+        }
+
+        #[cfg(feature = "serde")]
+        impl serde::Serialize for RuntimeShape<$scalar, 3> {
+            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+            where
+                S: serde::Serializer,
+            {
+                self.array.serialize(serializer)
+            }
+        }
+
+        #[cfg(feature = "serde")]
+        impl<'de> serde::Deserialize<'de> for RuntimeShape<$scalar, 3> {
+            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                let array = <[$scalar; 3]>::deserialize(deserializer)?;
+                Ok(Self::new(array))
             }
         }
     };
@@ -167,6 +209,27 @@ macro_rules! impl_shape4 {
                 let y = i / self.strides[1];
                 let x = i % self.strides[1];
                 [x, y, z, w]
+            }
+        }
+
+        #[cfg(feature = "serde")]
+        impl serde::Serialize for RuntimeShape<$scalar, 4> {
+            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+            where
+                S: serde::Serializer,
+            {
+                self.array.serialize(serializer)
+            }
+        }
+
+        #[cfg(feature = "serde")]
+        impl<'de> serde::Deserialize<'de> for RuntimeShape<$scalar, 4> {
+            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                let array = <[$scalar; 4]>::deserialize(deserializer)?;
+                Ok(Self::new(array))
             }
         }
     };
@@ -233,6 +296,27 @@ macro_rules! impl_pow2_shape2 {
                 [i & self.masks[0], (i & self.masks[1]) >> self.shifts[1]]
             }
         }
+
+        #[cfg(feature = "serde")]
+        impl serde::Serialize for RuntimePow2Shape<$scalar, 2> {
+            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+            where
+                S: serde::Serializer,
+            {
+                self.array.serialize(serializer)
+            }
+        }
+
+        #[cfg(feature = "serde")]
+        impl<'de> serde::Deserialize<'de> for RuntimePow2Shape<$scalar, 2> {
+            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                let array = <[$scalar; 2]>::deserialize(deserializer)?;
+                Ok(Self::new(array))
+            }
+        }
     };
 }
 
@@ -292,6 +376,27 @@ macro_rules! impl_pow2_shape3 {
                     (i & self.masks[1]) >> self.shifts[1],
                     (i & self.masks[2]) >> self.shifts[2],
                 ]
+            }
+        }
+
+        #[cfg(feature = "serde")]
+        impl serde::Serialize for RuntimePow2Shape<$scalar, 3> {
+            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+            where
+                S: serde::Serializer,
+            {
+                self.array.serialize(serializer)
+            }
+        }
+
+        #[cfg(feature = "serde")]
+        impl<'de> serde::Deserialize<'de> for RuntimePow2Shape<$scalar, 3> {
+            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                let array = <[$scalar; 3]>::deserialize(deserializer)?;
+                Ok(Self::new(array))
             }
         }
     };
@@ -360,6 +465,27 @@ macro_rules! impl_pow2_shape4 {
                     (i & self.masks[2]) >> self.shifts[2],
                     (i & self.masks[3]) >> self.shifts[3],
                 ]
+            }
+        }
+
+        #[cfg(feature = "serde")]
+        impl serde::Serialize for RuntimePow2Shape<$scalar, 4> {
+            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+            where
+                S: serde::Serializer,
+            {
+                self.array.serialize(serializer)
+            }
+        }
+
+        #[cfg(feature = "serde")]
+        impl<'de> serde::Deserialize<'de> for RuntimePow2Shape<$scalar, 4> {
+            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                let array = <[$scalar; 4]>::deserialize(deserializer)?;
+                Ok(Self::new(array))
             }
         }
     };

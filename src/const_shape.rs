@@ -4,7 +4,7 @@ use static_assertions::assert_impl_all;
 
 macro_rules! impl_const_shape2 {
     ($name:ident, $scalar:ty) => {
-        #[derive(Clone, Debug, Copy, Eq, PartialEq)]
+        #[derive(Clone, Debug, Copy, Eq, PartialEq, Default)]
         pub struct $name<const X: $scalar, const Y: $scalar>;
 
         impl<const X: $scalar, const Y: $scalar> $name<X, Y> {
@@ -49,7 +49,7 @@ impl_const_shape2!(ConstShape2i64, i64);
 
 macro_rules! impl_const_shape3 {
     ($name:ident, $scalar:ty) => {
-        #[derive(Clone, Debug, Copy, Eq, PartialEq)]
+        #[derive(Clone, Debug, Copy, Eq, PartialEq, Default)]
         pub struct $name<const X: $scalar, const Y: $scalar, const Z: $scalar>;
 
         impl<const X: $scalar, const Y: $scalar, const Z: $scalar> $name<X, Y, Z> {
@@ -98,7 +98,7 @@ impl_const_shape3!(ConstShape3i64, i64);
 
 macro_rules! impl_const_shape4 {
     ($name:ident, $scalar:ty) => {
-        #[derive(Clone, Debug, Copy, Eq, PartialEq)]
+        #[derive(Clone, Debug, Copy, Eq, PartialEq, Default)]
         pub struct $name<const X: $scalar, const Y: $scalar, const Z: $scalar, const W: $scalar>;
 
         impl<const X: $scalar, const Y: $scalar, const Z: $scalar, const W: $scalar>
@@ -154,7 +154,7 @@ impl_const_shape4!(ConstShape4i64, i64);
 
 macro_rules! impl_const_pow2_shape2 {
     ($name:ident, $scalar:ty) => {
-        #[derive(Clone, Debug, Copy, Eq, PartialEq)]
+        #[derive(Clone, Debug, Copy, Eq, PartialEq, Default)]
         pub struct $name<const X: $scalar, const Y: $scalar>;
 
         impl<const X: $scalar, const Y: $scalar> $name<X, Y> {
@@ -202,7 +202,7 @@ impl_const_pow2_shape2!(ConstPow2Shape2i64, i64);
 
 macro_rules! impl_const_pow2_shape3 {
     ($name:ident, $scalar:ty) => {
-        #[derive(Clone, Debug, Copy, Eq, PartialEq)]
+        #[derive(Clone, Debug, Copy, Eq, PartialEq, Default)]
         pub struct $name<const X: $scalar, const Y: $scalar, const Z: $scalar>;
 
         impl<const X: $scalar, const Y: $scalar, const Z: $scalar> $name<X, Y, Z> {
@@ -257,7 +257,7 @@ impl_const_pow2_shape3!(ConstPow2Shape3i64, i64);
 
 macro_rules! impl_const_pow2_shape4 {
     ($name:ident, $scalar:ty) => {
-        #[derive(Clone, Debug, Copy, Eq, PartialEq)]
+        #[derive(Clone, Debug, Copy, Eq, PartialEq, Default)]
         pub struct $name<const X: $scalar, const Y: $scalar, const Z: $scalar, const W: $scalar>;
 
         impl<const X: $scalar, const Y: $scalar, const Z: $scalar, const W: $scalar>
